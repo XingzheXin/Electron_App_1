@@ -41,7 +41,7 @@ app.on('ready', function () {
 });
 
 //Handle create add window
-function createAddWindow() {
+function createSelectJournalFileWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
@@ -76,13 +76,10 @@ const mainMenuTemplate = [
         label: 'File',
         submenu: [
             {
-                label: 'Add Item',
+                label: 'Select Journal File',
                 click() {
-                    createAddWindow();
+                    createSelectJournalFileWindow();
                 }
-            },
-            {
-                label: 'Clear Items'
             },
             {
                 label: 'Quit',
