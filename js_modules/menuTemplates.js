@@ -1,9 +1,3 @@
-//const electron = require('electron');
-const { app, BrowserWindow, Menu } = require('electron');
-const { dialog } = require('electron');
-
-const gotTheLock = app.requestSingleInstanceLock();
-
 const mainMenuTemplate = [
     {
         label: 'File',
@@ -135,103 +129,9 @@ const childMenuTemplate = [
     }
 ]
 
-const mainWindowMenuBar = Menu.buildFromTemplate(mainMenuTemplate);
-const childWindowMenuBar = Menu.buildFromTemplate(childMenuTemplate);
-var fs = require('fs');
-
-let mainWindow;
-let addWindow;
-
-function createMainWindow() {
-    //Create a new window
-    mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 900,
-        webPreferences: {
-            nodeIntegration: true
-        },
-        minHeight: 600,
-        minWidth: 800
-    })
-    mainWindow.setMenu(mainWindowMenuBar);
-    mainWindow.loadFile('./html/index.html');
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    })
-
-}
-
-app.on('ready', function () {
-    createMainWindow();
-    mainWindow.on('closed', function () {
-        app.quit();
-    })
-});
-
-//Handle create Select Journal File Window
-function createSelectJournalFileWindow() {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        },
-        minHeight: 600,
-        minWidth: 800
-    });
-
-    mainWindow.setMenu(childWindowMenuBar);
-    mainWindow.loadFile('./html/addWindow.html');
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
-
-    let content = 'Some text that you can save to a file';
-    dialog.showSaveDialog((fileName) => {
-        if (fileName === undefined) {
-            console.log('You did not save the file');
-            return;
-        }
-
-        fs.writeFile(fileName, content, (err) => {
-            if (err) {
-                console.log("There was an Error");
-            }
-        });
-    });
-}
-
-function createDongFengLuZhouSanZhouLiuBanWindow() {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        },
-        minHeight: 600,
-        minWidth: 800
-    });
-    mainWindow.setMenu(childWindowMenuBar);
-    mainWindow.loadFile('./html/东风路周三周六班.html');
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
-}
-
-//function createDongFengLuXinErYiBanWindow() {
-//    mainWindow = new BrowserWindow({
-//        width: 800,
-//        height: 600,
-//        webPreferences: {
-//            nodeIntegration: true
-//        },
-//        minHeight: 600,
-//        minWidth: 800
-//    });
-//    mainMenu.setMenu(childWindowMenuBar);
-//    mainWindow.loadFile('东风路新二（1）班.html');
-//    mainWindow.setApplicationMenu(null);
-//    mainWindow.on('closed', () => {
-//        mainWindow = null;
-//    });
-//}
+exports.getMainMenuTemplate = function () {
+    return mainMenuTemplate;
+};
+exports.getChildMenuTemplate = function () {
+    return childMenuTemplate;
+};
