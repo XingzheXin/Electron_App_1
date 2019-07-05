@@ -19,7 +19,7 @@ function retrieveFromDB(classname) {
     });
     
     var str = "SELECT * FROM students WHERE class=" + "'" + classname + "'";
-    con.query(str, function (err, result, fields) {
+    con.query(str, function (err, result) {
         if (err) throw err;
         for (var i = 0; i < result.length; i++) {
             var name = result[i].last_name + result[i].first_name;

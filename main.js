@@ -2,7 +2,7 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const { dialog } = require('electron');
 
-const gotTheLock = app.requestSingleInstanceLock();
+//const gotTheLock = app.requestSingleInstanceLock();
 
 const mainMenuTemplate = [
     {
@@ -180,13 +180,13 @@ app.on('ready', function () {
 //Handle create Select Journal File Window
 function createSelectJournalFileWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1600,
+        height: 1200,
         webPreferences: {
             nodeIntegration: true
         },
-        minHeight: 600,
-        minWidth: 800
+        minWidth: 800,
+        minHeight: 600
     });
 
     mainWindow.setMenu(childWindowMenuBar);
@@ -213,13 +213,13 @@ function createSelectJournalFileWindow() {
 
 function createDongFengLuZhouSanZhouLiuBanWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 900,
         webPreferences: {
             nodeIntegration: true
         },
-        minHeight: 600,
-        minWidth: 800
+        minWidth: 800,
+        minHeight: 600
     });
     mainWindow.setMenu(childWindowMenuBar);
     mainWindow.loadFile('./html/东风路周三周六班.html');
@@ -231,8 +231,8 @@ function createDongFengLuZhouSanZhouLiuBanWindow() {
 
 function createDongFengLuXinErYiBanWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 900,
         webPreferences: {
             nodeIntegration: true
         },
@@ -247,6 +247,7 @@ function createDongFengLuXinErYiBanWindow() {
     });
 }
 
+/*
 function insertDb() {
     mainWindow = new BrowserWindow({
         width: 800,
@@ -284,3 +285,4 @@ function insertDb() {
         mainWindow = null;
     });
 }
+*/
