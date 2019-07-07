@@ -23,16 +23,16 @@ function retrieveFromDB(classname) {
         if (err) throw err;
         for (var i = 0; i < result.length; i++) {
             var name = result[i].last_name + result[i].first_name;
-            addCheckbox(name);
+            addCheckbox(name, i, result.length);
         }
         con.end();
     });
 }
 
 
-function addCheckbox(studentname) {
+function addCheckbox(studentname, i, len) {
     // Declare relative variables
-    var student_list_div = document.getElementById('studentlist');
+    var student_attendance_form = document.getElementById('student_attendance_form');
     var cb_container = document.createElement('label');
     var input = document.createElement('input');
     var span = document.createElement('span');
@@ -47,7 +47,16 @@ function addCheckbox(studentname) {
     cb_container.appendChild(input);
     cb_container.appendChild(span);
     console.log(cb_container);
-    console.log(student_list_div);
-    student_list_div.appendChild(cb_container);
+    console.log(student_attendance_form);
+    student_attendance_form.appendChild(cb_container);
+    student_attendance_form.appendChild(cb_container);
+    input.type = "submit";
+    input.className = "button"
+    input.value = "Save"
     console.log("Inserted checkbox label into the list");
+    // This adds the customized submit button
+    if (i == len-1) {
+        student_attendance_form.appendChild(input)
+        console.log("Added a Submit button");
+    }
 }
