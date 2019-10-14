@@ -62,7 +62,7 @@ function addCheckbox(studentname, i, len) {
     submit_input_button.value = "Save"
     //console.log("Inserted checkbox label into the list");
     // This adds the customized submit button
-    if (i == len-1) {
-        student_attendance_form.appendChild(submit_input_button)
-    }
+    //if (i == len-1) {
+    //    student_attendance_form.appendChild(submit_input_button)
+    //}
 }
