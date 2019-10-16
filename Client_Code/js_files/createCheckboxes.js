@@ -46,6 +46,8 @@ function addCheckbox(studentname, i, len) {
     // Set attributes accordingly
     cb_container.className = "cb_container";
     cb_container.innerHTML = studentname;
+    input.name = studentname;
+    input.value = "true";
     input.type = "checkbox";
     input.checked = "checked";
     //input.setAttribute("checked", "checked");
